@@ -1,0 +1,272 @@
+package com.example.kuluckakontrolu
+
+import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.kuluckakontrolu.databinding.ActivitySettingsBinding
+import com.example.kuluckakontrolu.model.IncubatorSettings
+import com.example.kuluckakontrolu.model.LoadingState
+import com.example.kuluckakontrolu.utils.SecurityUtils
+import com.example.kuluckakontrolu.viewmodel.IncubatorViewModel
+import com.example.kuluckakontrolu.viewmodel.IncubatorViewModelFactory
+import android.util.Log
+import android.widget.Switch
+
+class SettingsActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySettingsBinding
+    private lateinit var viewModel: IncubatorViewModel
+
+    private var targetTemp = 37.5
+    private var targetHumidity = 60
+    private var motorInterval = 120
+    private var animalType = "TAVUK"
+    private var currentDay = 0
+    private var totalDays = 21
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Demo modu ayarları
+        val sharedPreferences = getSharedPreferences("KuluckaSettings", MODE_PRIVATE)
+        val switchDemoMode = findViewById<Switch>(R.id.switchDemoMode)
+        switchDemoMode.isChecked = sharedPreferences.getBoolean("DemoMode", false)
+
+// Demo modu durumunu kaydet
+        switchDemoMode.setOnCheckedChangeListener { _, isChecked ->
+            sharedPreferences.edit().putBoolean("DemoMode", isChecked).apply()
+            Toast.makeText(this, "Değişikliklerin etkili olması için uygulamayı yeniden başlatın", Toast.LENGTH_LONG).show()
+        }
+
+        // Geri butonu ekle
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // ViewModel oluşturma
+        val repository = (application as IncubatorApplication).repository
+        val viewModelFactory = IncubatorViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory)[IncubatorViewModel::class.java]
+
+        // Hayvan türü spinner'ını ayarla
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.animal_types,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinnerAnimalType.adapter = adapter
+
+        // Mevcut ayarları yükle
+        viewModel.dataState.observe(this) { state ->
+            if (state is LoadingState.Success) {
+                loadSettings(state.data.settings)
+            }
+        }
+
+        // Giriş butonu
+        binding.buttonLogin.setOnClickListener {
+            if (SecurityUtils.validatePassword(this, binding.editTextPassword.text.toString())) {
+                // Şifre doğru, ayarlar menüsünü göster
+                binding.layoutPasswordEntry.visibility = View.GONE
+                binding.settingsScrollView.visibility = View.VISIBLE
+            } else {
+                // Şifre yanlış
+                Toast.makeText(this, R.string.wrong_password, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        setupControlButtons()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
+    private fun setupControlButtons() {
+        with(binding) {
+            // Sıcaklık ayarı butonları
+            buttonTempMinus.setOnClickListener {
+                if (targetTemp > 30.0) {
+                    targetTemp -= 0.1
+                    textViewTempSetting.text = String.format("%.1f", targetTemp)
+                }
+            }
+
+            buttonTempPlus.setOnClickListener {
+                if (targetTemp < 40.0) {
+                    targetTemp += 0.1
+                    textViewTempSetting.text = String.format("%.1f", targetTemp)
+                }
+            }
+
+            // Nem ayarı butonları
+            buttonHumidityMinus.setOnClickListener {
+                if (targetHumidity > 40) {
+                    targetHumidity -= 1
+                    textViewHumiditySetting.text = targetHumidity.toString()
+                }
+            }
+
+            buttonHumidityPlus.setOnClickListener {
+                if (targetHumidity < 80) {
+                    targetHumidity += 1
+                    textViewHumiditySetting.text = targetHumidity.toString()
+                }
+            }
+
+            // Motor ayarı butonları
+            buttonMotorMinus.setOnClickListener {
+                if (motorInterval > 30) {
+                    motorInterval -= 15
+                    textViewMotorSetting.text = motorInterval.toString()
+                }
+            }
+
+            buttonMotorPlus.setOnClickListener {
+                if (motorInterval < 240) {
+                    motorInterval += 15
+                    textViewMotorSetting.text = motorInterval.toString()
+                }
+            }
+
+            // Gün ayarı butonları
+            buttonDaysMinus.setOnClickListener {
+                if (currentDay > 0) {
+                    currentDay -= 1
+                    textViewDaysSetting.text = currentDay.toString()
+                }
+            }
+
+            buttonDaysPlus.setOnClickListener {
+                if (currentDay < totalDays) {
+                    currentDay += 1
+                    textViewDaysSetting.text = currentDay.toString()
+                }
+            }
+
+            // Hayvan türü değiştiğinde
+            spinnerAnimalType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                    animalType = parent.getItemAtPosition(position).toString()
+                    totalDays = when (animalType) {
+                        "TAVUK" -> 21
+                        "ÖRDEK" -> 28
+                        else -> 17 // Bıldırcın
+                    }
+
+                    // Gün maksimum değerini kontrol et
+                    if (currentDay > totalDays) {
+                        currentDay = totalDays
+                        textViewDaysSetting.text = currentDay.toString()
+                    }
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                    // Hiçbir şey
+                }
+            }
+
+            // Kaydet ve gönder butonu
+            buttonSaveSettings.setOnClickListener {
+                try {
+                    // Virgül yerine nokta kullanarak Double'a çevir
+                    val tempText = textViewTempSetting.text.toString().replace(',', '.')
+                    val validatedTemp = tempText.toDouble()
+
+                    val validatedHumidity = textViewHumiditySetting.text.toString().toInt()
+                    val validatedMotor = textViewMotorSetting.text.toString().toInt()
+                    val validatedDay = textViewDaysSetting.text.toString().toInt()
+
+                    if (isValidSettings(validatedTemp, validatedHumidity, validatedMotor, validatedDay)) {
+                        saveSettings()
+                        Toast.makeText(this@SettingsActivity, R.string.settings_saved, Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        Toast.makeText(this@SettingsActivity, R.string.invalid_settings, Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: NumberFormatException) {
+                    Toast.makeText(this@SettingsActivity, R.string.invalid_number_format, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    private fun isValidSettings(temp: Double, humidity: Int, motor: Int, day: Int): Boolean {
+        return temp in 30.0..40.0 && humidity in 40..80 && motor in 30..240 && day in 0..totalDays
+    }
+
+    private fun loadSettings(settings: IncubatorSettings) {
+        targetTemp = settings.targetTemp
+        targetHumidity = settings.targetHumidity
+        motorInterval = settings.motorInterval
+        animalType = settings.animalType
+        currentDay = settings.currentDay
+        totalDays = settings.totalDays
+
+        with(binding) {
+            // UI'yi güncelle
+            textViewTempSetting.text = String.format("%.1f", targetTemp)
+            textViewHumiditySetting.text = targetHumidity.toString()
+            textViewMotorSetting.text = motorInterval.toString()
+            textViewDaysSetting.text = currentDay.toString()
+
+            // Spinner'ı doğru konuma ayarla
+            val animalTypes = resources.getStringArray(R.array.animal_types)
+            for (i in animalTypes.indices) {
+                if (animalTypes[i] == animalType) {
+                    spinnerAnimalType.setSelection(i)
+                    break
+                }
+            }
+        }
+    }
+
+    private fun saveSettings() {
+        try {
+            // Double ve Int değerleri güvenli dönüştürme
+            val tempValue = runCatching {
+                binding.textViewTempSetting.text.toString().replace(',', '.').toDoubleOrNull()
+            }.getOrNull() ?: targetTemp
+
+            val humidityValue = runCatching {
+                binding.textViewHumiditySetting.text.toString().toIntOrNull()
+            }.getOrNull() ?: targetHumidity
+
+            val motorValue = runCatching {
+                binding.textViewMotorSetting.text.toString().toIntOrNull()
+            }.getOrNull() ?: motorInterval
+
+            val dayValue = runCatching {
+                binding.textViewDaysSetting.text.toString().toIntOrNull()
+            }.getOrNull() ?: currentDay
+
+            // Değerleri güvenli aralıklara sınırla
+            val finalTemp = tempValue.coerceIn(30.0, 40.0)
+            val finalHumidity = humidityValue.coerceIn(40, 80)
+            val finalMotor = motorValue.coerceIn(30, 240)
+            val finalDay = dayValue.coerceIn(0, totalDays)
+
+            // Ayarları güncelle
+            val updatedSettings = IncubatorSettings(
+                targetTemp = finalTemp,
+                targetHumidity = finalHumidity,
+                motorInterval = finalMotor,
+                animalType = animalType,
+                currentDay = finalDay
+            )
+
+            viewModel.updateSettings(updatedSettings)
+            Toast.makeText(this, R.string.settings_saved, Toast.LENGTH_SHORT).show()
+            finish()
+        } catch (e: Exception) {
+            Log.e("SettingsActivity", "Ayarlar kaydedilirken hata: ${e.message}")
+            Toast.makeText(this, R.string.invalid_settings, Toast.LENGTH_SHORT).show()
+        }
+    }
+}
