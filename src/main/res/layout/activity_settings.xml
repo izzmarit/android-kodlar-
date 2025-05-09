@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    tools:context=".SettingsActivity">
+
+    <!-- Şifre girişi bölümü -->
+    <LinearLayout
+        android:id="@+id/layoutPasswordEntry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_lock"
+            app:tint="@color/text_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Ayarlar için şifre giriniz"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Şifre"
+            android:inputType="numberPassword"
+            android:maxLength="10"
+            android:padding="16dp"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/text_secondary" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/button_background"
+            android:text="Giriş"
+            android:textColor="@color/button_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Varsayılan şifre: 1234"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <Switch
+            android:id="@+id/switchDemoMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Demo Modu"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+    </LinearLayout>
+
+    <!-- Gelişmiş Ayarlar Bölümü -->
+    <LinearLayout
+        android:id="@+id/advancedSettingsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- PID Parametreleri -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PID Parametreleri"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- PID Kp ayarı -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Kp:"/>
+
+            <Button
+                android:id="@+id/buttonKpMinus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="-"/>
+
+            <TextView
+                android:id="@+id/textViewKp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:text="10.0"/>
+
+            <Button
+                android:id="@+id/buttonKpPlus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="+"/>
+        </LinearLayout>
+
+        <!-- PID Ki ayarı -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Ki:"/>
+
+            <Button
+                android:id="@+id/buttonKiMinus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="-"/>
+
+            <TextView
+                android:id="@+id/textViewKi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:text="0.10"/>
+
+            <Button
+                android:id="@+id/buttonKiPlus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="+"/>
+        </LinearLayout>
+
+        <!-- PID Kd ayarı -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Kd:"/>
+
+            <Button
+                android:id="@+id/buttonKdMinus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="-"/>
+
+            <TextView
+                android:id="@+id/textViewKd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:text="50.0"/>
+
+            <Button
+                android:id="@+id/buttonKdPlus"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:text="+"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Ayarlar bölümü (ilk başta gizli) -->
+    <ScrollView
+        android:id="@+id/settingsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Başlık -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="Kuluçka Makinesi Ayarları"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- Sıcaklık Ayarı -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sıcaklık Ayarı"
+                        android:textColor="@color/temperature_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonTempMinus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="-"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textViewTempSetting"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="37.5"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/buttonTempPlus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="+"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="°C (30.0 - 40.0)"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Nem Ayarı -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nem Ayarı"
+                        android:textColor="@color/humidity_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonHumidityMinus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="-"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textViewHumiditySetting"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="60"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/buttonHumidityPlus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="+"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="% (40 - 80)"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Motor Zaman Ayarı -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Motor Dönüş Aralığı"
+                        android:textColor="@color/motor_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonMotorMinus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="-"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textViewMotorSetting"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="120"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/buttonMotorPlus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="+"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Dakika (30 - 240)"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Hayvan Türü Seçimi -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hayvan Türü"
+                        android:textColor="@color/days_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spinnerAnimalType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:minHeight="48dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Gün Sayısı Ayarı -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/card_background"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mevcut Gün"
+                        android:textColor="@color/days_color"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonDaysMinus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="-"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/textViewDaysSetting"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="0"
+                            android:textColor="@color/text_primary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/buttonDaysPlus"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:backgroundTint="@color/button_background"
+                            android:text="+"
+                            android:textColor="@color/button_text"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Kuluçka Günü"
+                        android:textAlignment="center"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Kaydetme Butonu -->
+            <Button
+                android:id="@+id/buttonSaveSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/button_background"
+                android:padding="16dp"
+                android:text="Ayarları Kaydet ve Gönder"
+                android:textColor="@color/button_text"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
