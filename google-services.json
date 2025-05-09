@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "126007169490",
+    "project_id": "kulucka-kontrol-909cb",
+    "storage_bucket": "kulucka-kontrol-909cb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126007169490:android:1028cb5731cdee6a05780b",
+        "android_client_info": {
+          "package_name": "com.example.kuluckakontrolu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDvto0O7pVGHvKSAIzZLMTHqeHUCic_T4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
