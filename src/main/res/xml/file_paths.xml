@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path name="my_images" path="incubation_images/"/>
+    <files-path name="my_reports" path="reports/"/>
+    <files-path name="my_exports" path="exports/"/>
+    <files-path name="my_backups" path="backups/"/>
+    <cache-path name="shared_images" path="/"/>
+</paths>
