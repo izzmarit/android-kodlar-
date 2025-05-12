@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kuluçka Kontrolü MK V5.0</string>
+    <string name="app_description">Profesyonel kuluçka makineleri için akıllı kontrol sistemi</string>
+    <string name="developer_info">© 2023–2025 Tüm hakları saklıdır.</string>
+
+    <string name="ok">Tamam</string>
+    <string name="invalid_settings">Geçersiz ayarlar</string>
+    <string name="invalid_number_format">Geçersiz sayı formatı</string>
+
+    <!-- Bottom Navigation -->
+    <string name="dashboard">Pano</string>
+    <string name="graphs">Grafikler</string>
+    <string name="journal">Günlük</string>
+    <string name="settings">Ayarlar</string>
+
+    <!-- Main Menu -->
+    <string name="refresh">Yenile</string>
+    <string name="exit_demo_mode">Demo Modundan Çık</string>
+    <string name="about">Hakkında</string>
+
+    <!-- Dashboard -->
+    <string name="active_incubation">Aktif Kuluçka</string>
+    <string name="temperature">Sıcaklık</string>
+    <string name="humidity">Nem</string>
+    <string name="motor_status">Motor Durumu</string>
+    <string name="system_summary">Sistem Özeti</string>
+    <string name="firmware_update">Yazılım Güncelleme</string>
+    <string name="check_updates">Güncellemeleri Kontrol Et</string>
+    <string name="update_now">Şimdi Güncelle</string>
+    <string name="start_incubation">Yeni Kuluçka Başlat</string>
+    <string name="graphs_and_statistics">Grafikler ve İstatistikler</string>
+
+    <!-- Connection Status -->
+    <string name="connecting">Bağlanıyor...</string>
+    <string name="connected">Bağlandı</string>
+    <string name="connection_failed">Bağlantı Hatası</string>
+    <string name="demo_mode">Demo Modu</string>
+
+    <!-- Errors -->
+    <string name="connection_error_text">Bağlantı Hatası: ESP32 cihazına bağlanılamadı.</string>
+    <string name="data_parsing_error">Veri işleme hatası: Hatalı veri formatı.</string>
+    <string name="timeout_error">Zaman aşımı hatası: İstek süresi doldu.</string>
+    <string name="generic_error">Hata: %1$s</string>
+    <string name="no_data_available">Veri bulunamadı</string>
+
+    <!-- Dashboard Details -->
+    <string name="advanced_details">Gelişmiş Detaylar</string>
+    <string name="sensor_1">Sensör 1:</string>
+    <string name="sensor_2">Sensör 2:</string>
+    <string name="pid_output">PID Çıkışı:</string>
+    <string name="target_format">Hedef: %1$s</string>
+    <string name="humidity_format">%%%1$d</string>
+    <string name="heater_status">Isıtıcı: %1$s</string>
+    <string name="humidifier_status">Nemlendirici: %1$s</string>
+    <string name="motor_interval">Çevirme Sıklığı: %1$s dk</string>
+    <string name="minutes_format">%1$d dk</string>
+    <string name="minutes_remaining">Kalan: %1$d dk</string>
+    <string name="active">Aktif</string>
+    <string name="inactive">Pasif</string>
+    <string name="running">Çalışıyor</string>
+    <string name="waiting">Bekliyor</string>
+
+    <!-- Cycle Information -->
+    <string name="cycle_name">İsim:</string>
+    <string name="animal_type">Hayvan Türü:</string>
+    <string name="start_date">Başlangıç:</string>
+    <string name="day_format">Gün %1$d / %2$d</string>
+    <string name="total_eggs">Toplam Yumurta:</string>
+    <string name="hatched_eggs">Çıkan Yumurta Sayısı</string>
+    <string name="hatched_count">Çıkan:</string>
+    <string name="success_rate">Başarı Oranı: %%%1$d</string>
+    <string name="success_rate_short">%%%1$d</string>
+
+    <!-- System Summary -->
+    <string name="total_cycles">Toplam Döngü:</string>
+    <string name="total_runtime">Toplam Çalışma:</string>
+    <string name="average_temp">Ort. Sıcaklık:</string>
+    <string name="average_humidity">Ort. Nem:</string>
+    <string name="last_updated">Son Güncelleme:</string>
+    <string name="days_hours_format">%1$d gün %2$d saat</string>
+    <string name="hours_format">%1$d saat</string>
+
+    <!-- Update Status -->
+    <string name="checking_updates">Güncellemeler kontrol ediliyor...</string>
+    <string name="no_updates">Güncelleme bulunamadı</string>
+    <string name="update_available">Mevcut: %1$s, Yeni: %2$s</string>
+    <string name="updating_progress">Güncelleniyor: %%%1$d</string>
+    <string name="update_complete">Güncelleme tamamlandı</string>
+
+    <!-- Journal -->
+    <string name="incubation_cycles">Kuluçka Döngüleri</string>
+    <string name="cycle_notes">Döngü Notları</string>
+    <string name="no_cycles_found">Döngü bulunamadı</string>
+    <string name="no_notes_found">Not bulunamadı</string>
+    <string name="add_note">Not Ekle</string>
+    <string name="take_photo">Fotoğraf Çek</string>
+    <string name="select_photo">Fotoğraf Seç</string>
+    <string name="finish_cycle">Döngüyü Sonlandır</string>
+    <string name="export_report">Rapor Oluştur</string>
+
+    <!-- Settings -->
+    <string name="temperature_settings">Sıcaklık Ayarları</string>
+    <string name="humidity_settings">Nem Ayarları</string>
+    <string name="motor_settings">Motor Ayarları</string>
+    <string name="advanced_settings">Gelişmiş Ayarlar</string>
+    <string name="target_temperature">Hedef Sıcaklık</string>
+    <string name="target_humidity">Hedef Nem</string>
+    <string name="motor_interval_label">Çevirme Sıklığı (dk)</string>
+    <string name="save_settings">Ayarları Kaydet</string>
+    <string name="data_management">Veri Yönetimi</string>
+    <string name="backup_data">Veri Yedekle</string>
+    <string name="restore_data">Yedekten Geri Yükle</string>
+    <string name="export_data">Veriyi Dışa Aktar</string>
+    <string name="device_settings">Cihaz Ayarları</string>
+    <string name="wifi_settings">Wi-Fi Ayarları</string>
+
+    <!-- Dialog Messages -->
+    <string name="required_field">Bu alan zorunludur</string>
+    <string name="password_required">Şifre Gerekli</string>
+    <string name="settings_password_prompt">Ayarları güncellemek için şifre gereklidir.</string>
+    <string name="wifi_password_prompt">Wi-Fi ayarlarını değiştirmek için şifre gereklidir.</string>
+    <string name="wrong_password">Yanlış şifre</string>
+    <string name="settings_saved">Ayarlar kaydedildi</string>
+    <string name="backup_failed">Yedekleme başarısız oldu</string>
+    <string name="restore_success">Geri yükleme başarılı</string>
+    <string name="restore_failed">Geri yükleme başarısız oldu</string>
+    <string name="export_failed">Dışa aktarma başarısız oldu</string>
+
+    <!-- Dialog Titles -->
+    <string name="new_incubation_cycle">Yeni Kuluçka Döngüsü</string>
+    <string name="finish_incubation_cycle">Kuluçka Döngüsünü Sonlandır</string>
+    <string name="note_content">Not İçeriği</string>
+    <string name="initial_notes">Başlangıç Notları (İsteğe Bağlı)</string>
+    <string name="select_time_range">Zaman Aralığı Seçin</string>
+
+    <!-- Time Ranges -->
+    <string name="last_hour">Son 1 Saat</string>
+    <string name="last_day">Son 24 Saat</string>
+    <string name="last_week">Son 7 Gün</string>
+    <string name="full_cycle">Tüm Döngü</string>
+
+    <!-- Dialog Buttons -->
+    <string name="cancel">İptal</string>
+    <string name="save">Kaydet</string>
+    <string name="start">Başlat</string>
+    <string name="finish">Tamamla</string>
+    <string name="close">Kapat</string>
+    <string name="retry">Yeniden Dene</string>
+
+    <!-- Connection Setup -->
+    <string name="connection_setup">Bağlantı Kurulumu</string>
+    <string name="esp32_connection_details">ESP32 Bağlantı Bilgileri</string>
+    <string name="connection_instructions">Kuluçka makinesi cihazının ağ bilgilerini girin. Varsayılan olarak ESP32 IP adresi 192.168.4.1 ve port 80\'dir.</string>
+    <string name="ip_address">IP Adresi</string>
+    <string name="port">Port</string>
+    <string name="test_connection">Bağlantıyı Test Et</string>
+    <string name="testing_connection">Bağlantı test ediliyor...</string>
+    <string name="connection_successful">Bağlantı başarılı!</string>
+    <string name="connection_failed_message">Bağlantı başarısız oldu</string>
+    <string name="connection_error">Bağlantı hatası: %1$s</string>
+    <string name="save_and_continue">Kaydet ve Devam Et</string>
+    <string name="demo_mode_description">Gerçek bir ESP32 cihazınız yoksa, uygulamayı test etmek için demo modunu kullanabilirsiniz.</string>
+    <string name="start_demo_mode">Demo Modunu Başlat</string>
+    <string name="demo_mode_enabled">Demo modu etkinleştirildi</string>
+
+    <!-- Connection Error Dialog -->
+    <string name="connection_error_title">Bağlantı Hatası</string>
+    <string name="connection_error_message">ESP32 cihazınıza bağlantı kesildi. Yeniden bağlanmayı denemek ister misiniz?</string>
+
+    <!-- Service Notifications -->
+    <string name="notification_channel_name">Kuluçka Monitör Hizmeti</string>
+    <string name="notification_channel_description">Kuluçka makinesi izleme hizmeti için bildirimleri gösterir.</string>
+    <string name="notification_alerts_channel_name">Kuluçka Uyarıları</string>
+    <string name="notification_alerts_channel_description">Sıcaklık, nem ve bağlantı durumu gibi kritik uyarıları gösterir.</string>
+    <string name="service_running">Kuluçka İzleme Hizmeti Çalışıyor</string>
+    <string name="service_running_demo">Demo Modu - Kuluçka İzleme Hizmeti</string>
+    <string name="connection_lost">Bağlantı Kesildi - Yeniden Bağlanmaya Çalışılıyor</string>
+    <string name="monitoring_active_incubation">%1$s kuluçkası izleniyor</string>
+    <string name="no_active_incubation">Aktif kuluçka döngüsü yok</string>
+
+    <!-- PID Ayarları -->
+    <string name="pid_parameters">PID Parametreleri</string>
+    <string name="pid_kp">Kp (Orantısal Kazanç)</string>
+    <string name="pid_ki">Ki (İntegral Kazanç)</string>
+    <string name="pid_kd">Kd (Türev Kazanç)</string>
+    <string name="sensor_details">Sensör Detayları</string>
+    <string name="sensor_1_temp">Sensör 1 Sıcaklık:</string>
+    <string name="sensor_2_temp">Sensör 2 Sıcaklık:</string>
+    <string name="sensor_1_hum">Sensör 1 Nem:</string>
+    <string name="sensor_2_hum">Sensör 2 Nem:</string>
+
+    <!-- Animal Types -->
+    <string-array name="animal_types">
+        <item>TAVUK</item>
+        <item>ÖRDEK</item>
+        <item>BILDIRCIN</item>
+        <item>KAZ</item>
+        <item>HİNDİ</item>
+        <item>SÜLÜN</item>
+        <item>GÜVERCİN</item>
+        <item>KEKLİK</item>
+    </string-array>
+
+    <!-- Security -->
+    <string name="password">Şifre</string>
+    <string name="default_password">admin</string>
+    <string name="master_password">12345</string>
+</resources>
