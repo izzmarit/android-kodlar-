@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">KULUCKA MK v5.0</string>
+    <string name="app_subtitle">Kuluçka Makinesi Kontrol Uygulaması</string>
+
+    <!-- Ana ekran -->
+    <string name="connection_status">Bağlantı Durumu:</string>
+    <string name="connected">Bağlı</string>
+    <string name="not_connected">Bağlantı Yok</string>
+    <string name="connect">Bağlan</string>
+
+    <!-- Dashboard -->
+    <string name="temperature_and_humidity">Sıcaklık ve Nem</string>
+    <string name="current_temp">Mevcut Sıcaklık:</string>
+    <string name="target_temp">Hedef Sıcaklık:</string>
+    <string name="heater_status">Isıtıcı Durumu:</string>
+    <string name="current_humid">Mevcut Nem:</string>
+    <string name="target_humid">Hedef Nem:</string>
+    <string name="humidifier_status">Nemlendirici Durumu:</string>
+    <string name="incubation_status">Kuluçka Durumu</string>
+    <string name="incubation_type">Kuluçka Tipi:</string>
+    <string name="day">Gün:</string>
+    <string name="motor_status">Motor Durumu:</string>
+    <string name="on">AÇIK</string>
+    <string name="off">KAPALI</string>
+    <string name="unknown">Bilinmiyor</string>
+
+    <!-- Ayarlar -->
+    <string name="settings">Ayarlar</string>
+    <string name="incubation_settings">Kuluçka Ayarları</string>
+    <string name="motor_settings">Motor Ayarları</string>
+    <string name="pid_settings">PID Ayarları</string>
+    <string name="calibration_settings">Kalibrasyon</string>
+    <string name="alarm_settings">Alarm Ayarları</string>
+
+    <!-- Kuluçka Ayarları -->
+    <string name="incubation_type_selection">Kuluçka Tipi Seçimi</string>
+    <string name="chicken">Tavuk (21 gün)</string>
+    <string name="quail">Bıldırcın (17 gün)</string>
+    <string name="goose">Kaz (28 gün)</string>
+    <string name="manual">Manuel Ayar</string>
+    <string name="manual_settings">Manuel Ayarlar</string>
+    <string name="development_temp">Gelişim Sıcaklığı:</string>
+    <string name="hatching_temp">Çıkım Sıcaklığı:</string>
+    <string name="development_humid">Gelişim Nemi:</string>
+    <string name="hatching_humid">Çıkım Nemi:</string>
+    <string name="development_days">Gelişim Günleri:</string>
+    <string name="hatching_days">Çıkım Günleri:</string>
+    <string name="temp_in_celsius">°C cinsinden sıcaklık</string>
+    <string name="humid_in_percent">% cinsinden nem</string>
+    <string name="days">Gün sayısı</string>
+    <string name="save_settings">Ayarları Kaydet</string>
+    <string name="start_incubation">Kuluçkayı Başlat</string>
+    <string name="stop_incubation">Kuluçkayı Durdur</string>
+
+    <!-- Motor Ayarları -->
+    <string name="motor_wait_time">Motor Bekleme Süresi (dk):</string>
+    <string name="motor_run_time">Motor Çalışma Süresi (sn):</string>
+    <string name="turning_interval">Çevirme Aralığı (saat):</string>
+    <string name="turning_duration">Çevirme Süresi (sn):</string>
+    <string name="turning_enabled">Çevirme Etkin:</string>
+
+    <!-- PID Ayarları -->
+    <string name="pid_kp">Kp (Oransal Kazanç):</string>
+    <string name="pid_ki">Ki (İntegral Kazanç):</string>
+    <string name="pid_kd">Kd (Türev Kazanç):</string>
+    <string name="pid_mode">PID Modu:</string>
+    <string name="pid_off">Kapalı</string>
+    <string name="pid_manual">Manuel</string>
+    <string name="pid_auto_tune">Otomatik Ayarlama</string>
+    <string name="start_auto_tune">Otomatik Ayarlamayı Başlat</string>
+    <string name="pid_enabled">PID Etkin</string>
+    <string name="pid_disabled">PID Pasif</string>
+
+    <!-- Kalibrasyon Ayarları -->
+    <string name="temp_sensor_1">1. Sıcaklık Sensörü:</string>
+    <string name="temp_sensor_2">2. Sıcaklık Sensörü:</string>
+    <string name="humid_sensor_1">1. Nem Sensörü:</string>
+    <string name="humid_sensor_2">2. Nem Sensörü:</string>
+    <string name="offset">Sapma değeri</string>
+    <string name="calibration_factor">Kalibrasyon faktörü</string>
+
+    <!-- Alarm Ayarları -->
+    <string name="alarm_system">Alarm Sistemi</string>
+    <string name="master_alarm">Ana Alarm Kontrolü</string>
+    <string name="alarms_on">Alarmlar: AÇIK</string>
+    <string name="alarms_off">Alarmlar: KAPALI</string>
+    <string name="temp_low_alarm">Düşük Sıcaklık Alarmı (°C):</string>
+    <string name="temp_high_alarm">Yüksek Sıcaklık Alarmı (°C):</string>
+    <string name="humid_low_alarm">Düşük Nem Alarmı (%):</string>
+    <string name="humid_high_alarm">Yüksek Nem Alarmı (%):</string>
+    <string name="sound_alarm">Sesli Alarm</string>
+    <string name="vibration_alarm">Titreşim Alarm</string>
+
+    <!-- Bildirimler -->
+    <string name="temp_alarm">Sıcaklık Alarmı!</string>
+    <string name="humid_alarm">Nem Alarmı!</string>
+    <string name="connection_alarm">Bağlantı Kesildi!</string>
+    <string name="alarm_notification_title">Kuluçka Alarmı</string>
+    <string name="alarm_notification_message">Sıcaklık veya nem alarm sınırlarının dışında!</string>
+
+    <!-- WiFi ayarları -->
+    <string name="wifi_settings">WiFi Ayarları</string>
+    <string name="current_mode">Mevcut Mod:</string>
+    <string name="station_mode">Station Modu (Ev WiFi)</string>
+    <string name="ap_mode">AP Modu (Hotspot)</string>
+    <string name="scan_networks">Ağları Tara</string>
+    <string name="connect_wifi">WiFi\'ya Bağlan</string>
+    <string name="switch_to_ap">AP Moduna Geç</string>
+    <string name="wifi_password">WiFi Şifresi</string>
+    <string name="wifi_connection_instructions">ESP32 Bağlantı Talimatları</string>
+    <string name="connect_to_esp32_first">Önce ESP32\'nin oluşturduğu WiFi ağına bağlanın</string>
+    <string name="esp32_network_name">Ağ Adı: KULUCKA_MK_v5</string>
+    <string name="esp32_network_password">Şifre: 12345678</string>
+    <string name="scan_wifi_networks">WiFi Ağlarını Tara</string>
+    <string name="connect_to_wifi">WiFi\'ya Bağlan</string>
+    <string name="switch_to_ap_mode">AP Moduna Geç</string>
+    <string name="current_wifi_status">Mevcut WiFi Durumu</string>
+    <string name="esp32_not_connected">ESP32\'ye Bağlı Değilsiniz</string>
+    <string name="esp32_ip_address">ESP32 IP Adresi</string>
+    <string name="test_connection">Bağlantıyı Test Et</string>
+    <string name="save_ip">IP\'yi Kaydet</string>
+    <string name="wifi_networks">WiFi Ağları</string>
+    <string name="manual_wifi_connection">Manuel WiFi Bağlantısı</string>
+    <string name="wifi_ssid">WiFi Ağ Adı (SSID)</string>
+    <string name="device_mode">Cihaz Modu</string>
+
+    <!-- Bağlantı durumları -->
+    <string name="connecting">Bağlanıyor...</string>
+    <string name="connection_failed">Bağlantı Başarısız</string>
+    <string name="connection_successful">Bağlantı Başarılı</string>
+    <string name="connection_lost">Bağlantı Koptu</string>
+    <string name="no_connection">Bağlantı Yok</string>
+
+    <!-- Hata mesajları -->
+    <string name="error_invalid_ip">Geçersiz IP adresi</string>
+    <string name="error_connection_failed">ESP32\'ye bağlanılamadı</string>
+    <string name="error_invalid_input">Geçersiz giriş</string>
+    <string name="error_save_failed">Kaydetme başarısız</string>
+    <string name="error_network_error">Ağ hatası</string>
+    <string name="error_timeout">Bağlantı zaman aşımı</string>
+    <string name="error_json_parse">Veri ayrıştırma hatası</string>
+
+    <!-- Başarı mesajları -->
+    <string name="success_settings_saved">Ayarlar başarıyla kaydedildi</string>
+    <string name="success_connection_established">Bağlantı kuruldu</string>
+    <string name="success_wifi_connected">WiFi\'ye bağlandı</string>
+    <string name="success_parameter_updated">Parametre güncellendi</string>
+    <string name="success_alarm_dismissed">Alarm kapatıldı</string>
+
+    <!-- Menü öğeleri -->
+    <string name="menu_dashboard">Kontrol Paneli</string>
+    <string name="menu_incubation">Kuluçka</string>
+    <string name="menu_motor">Motor</string>
+    <string name="menu_pid">PID</string>
+    <string name="menu_calibration">Kalibrasyon</string>
+    <string name="menu_alarm">Alarm</string>
+    <string name="menu_wifi">WiFi</string>
+    <string name="menu_settings">Ayarlar</string>
+
+    <!-- Butonlar -->
+    <string name="btn_start">Başlat</string>
+    <string name="btn_stop">Durdur</string>
+    <string name="btn_pause">Duraklat</string>
+    <string name="btn_resume">Devam Et</string>
+    <string name="btn_save">Kaydet</string>
+    <string name="btn_cancel">İptal</string>
+    <string name="btn_ok">Tamam</string>
+    <string name="btn_retry">Tekrar Dene</string>
+    <string name="btn_refresh">Yenile</string>
+    <string name="btn_back">Geri</string>
+    <string name="btn_next">İleri</string>
+    <string name="btn_reset">Sıfırla</string>
+    <string name="btn_default">Varsayılan</string>
+    <string name="btn_apply">Uygula</string>
+    <string name="btn_dismiss">Kapat</string>
+
+    <!-- Dialog mesajları -->
+    <string name="dialog_confirm_title">Onay</string>
+    <string name="dialog_warning_title">Uyarı</string>
+    <string name="dialog_error_title">Hata</string>
+    <string name="dialog_info_title">Bilgi</string>
+    <string name="dialog_exit_confirm">Uygulamadan çıkmak istediğinizden emin misiniz?</string>
+    <string name="dialog_reset_confirm">Tüm ayarları sıfırlamak istediğinizden emin misiniz?</string>
+    <string name="dialog_stop_incubation_confirm">Kuluçka programını durdurmak istediğinizden emin misiniz?</string>
+
+    <!-- Durum mesajları -->
+    <string name="status_initializing">Başlatılıyor...</string>
+    <string name="status_ready">Hazır</string>
+    <string name="status_running">Çalışıyor</string>
+    <string name="status_stopped">Durduruldu</string>
+    <string name="status_paused">Duraklatıldı</string>
+    <string name="status_error">Hata</string>
+    <string name="status_offline">Çevrimdışı</string>
+    <string name="status_online">Çevrimiçi</string>
+
+    <!-- Birimler -->
+    <string name="unit_celsius">°C</string>
+    <string name="unit_fahrenheit">°F</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_seconds">saniye</string>
+    <string name="unit_minutes">dakika</string>
+    <string name="unit_hours">saat</string>
+    <string name="unit_days">gün</string>
+
+    <!-- Açıklamalar -->
+    <string name="description_temperature_sensor">Kuluçka makinesindeki sıcaklık sensörünün anlık okuması</string>
+    <string name="description_humidity_sensor">Kuluçka makinesindeki nem sensörünün anlık okuması</string>
+    <string name="description_heater_status">Isıtıcının çalışma durumu</string>
+    <string name="description_humidifier_status">Nemlendirici sistemin çalışma durumu</string>
+    <string name="description_motor_status">Yumurta çevirme motorunun durumu</string>
+    <string name="description_pid_control">Otomatik sıcaklık kontrol sisteminin durumu</string>
+
+    <!-- Ekstra string'ler -->
+    <string name="loading">Yükleniyor...</string>
+    <string name="please_wait">Lütfen bekleyin...</string>
+    <string name="no_data">Veri yok</string>
+    <string name="last_update">Son güncelleme:</string>
+    <string name="never">Hiçbir zaman</string>
+    <string name="just_now">Az önce</string>
+    <string name="seconds_ago">saniye önce</string>
+    <string name="minutes_ago">dakika önce</string>
+    <string name="hours_ago">saat önce</string>
+    <string name="days_ago">gün önce</string>
+
+</resources>
