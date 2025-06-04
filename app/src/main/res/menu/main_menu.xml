@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_incubation"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_incubation_settings"
+            android:icon="@drawable/ic_incubation"
+            android:title="Kuluçka Ayarları" />
+        <item
+            android:id="@+id/nav_pid_settings"
+            android:icon="@drawable/ic_pid"
+            android:title="PID Ayarları" />
+        <item
+            android:id="@+id/nav_alarm_settings"
+            android:icon="@drawable/ic_alarm"
+            android:title="Alarm Ayarları" />
+        <item
+            android:id="@+id/nav_wifi_settings"
+            android:icon="@drawable/ic_wifi"
+            android:title="WiFi Ayarları" />
+    </group>
+    <item android:title="Diğer Ayarlar">
+        <menu>
+            <item
+                android:id="@+id/nav_motor_settings"
+                android:icon="@drawable/ic_motor"
+                android:title="Motor Ayarları" />
+            <item
+                android:id="@+id/nav_calibration"
+                android:icon="@drawable/ic_calibration"
+                android:title="Kalibrasyon" />
+        </menu>
+    </item>
+</menu>
