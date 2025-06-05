@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Başlık -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/alarm_settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorText" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colorDivider" />
+
+        <!-- Kontrol Butonları -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_load_alarm_settings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="ESP32'den Yükle"
+                android:textSize="14sp"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_reset_alarm_defaults"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Varsayılan Değerler"
+                android:textSize="14sp"
+                android:background="@drawable/background_button"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <!-- Master Alarm Kontrolü -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/colorSurface">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/alarm_system"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorText" />
+
+                    <TextView
+                        android:id="@+id/tv_alarm_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/alarms_off"
+                        android:textColor="@color/colorError"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Tüm alarm bildirimlerini kontrol eder"
+                        android:textColor="@color/colorTextSecondary"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <Switch
+                    android:id="@+id/switch_alarm_enabled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Sıcaklık Alarmları -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sıcaklık Alarmları"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorText"
+                    android:drawableStart="@drawable/ic_temperature"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical" />
+
+                <!-- Güncel Değerler -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_current_temp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Güncel: --°C"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText" />
+
+                    <TextView
+                        android:id="@+id/tv_target_temp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hedef: --°C"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText"
+                        android:gravity="end" />
+
+                </LinearLayout>
+
+                <!-- Alarm Durumu -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:id="@+id/temp_alarm_indicator"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/ic_alarm"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_temp_alarm_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Normal"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorActive"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_dismiss_temp_alarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Alarmı Kapat"
+                        android:textSize="12sp"
+                        android:background="@color/colorError"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <!-- Alarm Aralığı -->
+                <TextView
+                    android:id="@+id/tv_temp_alarm_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alarm aralığı hesaplanıyor..."
+                    android:textSize="12sp"
+                    android:textColor="@color/colorTextSecondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/temp_low_alarm"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText" />
+
+                    <EditText
+                        android:id="@+id/et_temp_low_alarm"
+                        android:layout_width="80dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="1.0"
+                        android:inputType="numberDecimal"
+                        android:textSize="14sp"
+                        android:background="@drawable/background_card"
+                        android:padding="8dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="°C"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorTextSecondary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/temp_high_alarm"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText" />
+
+                    <EditText
+                        android:id="@+id/et_temp_high_alarm"
+                        android:layout_width="80dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="1.0"
+                        android:inputType="numberDecimal"
+                        android:textSize="14sp"
+                        android:background="@drawable/background_card"
+                        android:padding="8dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="°C"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorTextSecondary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Nem Alarmları -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nem Alarmları"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorText"
+                    android:drawableStart="@drawable/ic_humidity"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical" />
+
+                <!-- Güncel Değerler -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_current_humidity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Güncel: --%"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText" />
+
+                    <TextView
+                        android:id="@+id/tv_target_humidity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Hedef: --%"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText"
+                        android:gravity="end" />
+
+                </LinearLayout>
+
+                <!-- Alarm Durumu -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <View
+                        android:id="@+id/humidity_alarm_indicator"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:background="@drawable/ic_alarm"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_humidity_alarm_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Normal"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorActive"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_dismiss_humidity_alarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Alarmı Kapat"
+                        android:textSize="12sp"
+                        android:background="@color/colorError"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <!-- Alarm Aralığı -->
+                <TextView
+                    android:id="@+id/tv_humidity_alarm_range"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Alarm aralığı hesaplanıyor..."
+                    android:textSize="12sp"
+                    android:textColor="@color/colorTextSecondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/humid_low_alarm"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText" />
+
+                    <EditText
+                        android:id="@+id/et_humid_low_alarm"
+                        android:layout_width="80dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="10.0"
+                        android:inputType="numberDecimal"
+                        android:textSize="14sp"
+                        android:background="@drawable/background_card"
+                        android:padding="8dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="%"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorTextSecondary" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/humid_high_alarm"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorText" />
+
+                    <EditText
+                        android:id="@+id/et_humid_high_alarm"
+                        android:layout_width="80dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="10.0"
+                        android:inputType="numberDecimal"
+                        android:textSize="14sp"
+                        android:background="@drawable/background_card"
+                        android:padding="8dp"
+                        android:gravity="center" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="%"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorTextSecondary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Kontrol Butonları -->
+        <Button
+            android:id="@+id/btn_save_alarm_settings"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/save_settings"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/background_button"
+            android:elevation="2dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_test_alarms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Alarm Testi"
+                android:textSize="14sp"
+                android:background="@drawable/background_button"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/btn_dismiss_all_alarms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Tüm Alarmları Kapat"
+                android:textSize="14sp"
+                android:background="@color/colorError"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <!-- Bilgilendirme Metni -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ℹ️ Alarm Ayarları Hakkında"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Alarm değerleri hedef değerlerden ne kadar sapma olduğunda alarm verileceğini belirler."
+                    android:textSize="12sp"
+                    android:textColor="@color/colorTextSecondary" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="• Örnek: Hedef sıcaklık 37.5°C, düşük alarm 1.0°C ise, sıcaklık 36.5°C'nin altına düştüğünde alarm verir."
+                    android:textSize="12sp"
+                    android:textColor="@color/colorTextSecondary" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="• Ayarları ESP32'ye göndermek için 'Ayarları Kaydet' butonunu kullanın."
+                    android:textSize="12sp"
+                    android:textColor="@color/colorTextSecondary" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>
