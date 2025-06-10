@@ -1,0 +1,28 @@
+<!-- settings_menu.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_home"
+        android:title="@string/menu_home"
+        android:icon="@drawable/ic_arrow_back"
+        app:showAsAction="always"
+        android:contentDescription="@string/menu_home" />
+
+    <item
+        android:id="@+id/action_reset_all"
+        android:title="Tüm Ayarları Sıfırla"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_export_settings"
+        android:title="Ayarları Dışa Aktar"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_import_settings"
+        android:title="Ayarları İçe Aktar"
+        app:showAsAction="never" />
+
+</menu>
