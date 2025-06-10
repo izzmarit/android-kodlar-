@@ -1,0 +1,15 @@
+<!-- switch_track.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/color_primary_light" />
+            <corners android:radius="@dimen/switch_height" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/border_color" />
+            <corners android:radius="@dimen/switch_height" />
+        </shape>
+    </item>
+</selector>

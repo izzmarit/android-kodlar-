@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".activities.MainActivity">
+
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="KULUCKA MK v5.0"
+            app:titleTextColor="@android:color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_padding">
+
+                <!-- Temperature Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTemperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_content_padding">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:src="@drawable/ic_temperature"
+                                android:tint="@color/color_primary"
+                                android:layout_marginEnd="@dimen/icon_margin"
+                                android:contentDescription="@string/temperature_icon" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/temperature"
+                                android:textSize="@dimen/card_title_text_size"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="@dimen/divider_margin"
+                            android:background="@color/divider_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvCurrentTemp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="--.-°C"
+                                    android:textSize="@dimen/main_value_text_size"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    tools:text="37.5°C" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvTargetTemp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/small_margin"
+                                    android:text="Hedef: --.-°C"
+                                    android:textSize="@dimen/secondary_text_size"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Hedef: 37.5°C" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="end">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvHeaterStatus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Durum: Bilinmiyor"
+                                    android:textSize="@dimen/status_text_size"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Isıtıcı: AÇIK" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Humidity Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardHumidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_content_padding">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:src="@drawable/ic_humidity"
+                                android:tint="@color/color_accent"
+                                android:layout_marginEnd="@dimen/icon_margin"
+                                android:contentDescription="@string/humidity_icon" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/humidity"
+                                android:textSize="@dimen/card_title_text_size"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="@dimen/divider_margin"
+                            android:background="@color/divider_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvCurrentHumidity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="--%"
+                                    android:textSize="@dimen/main_value_text_size"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_primary"
+                                    tools:text="65%" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvTargetHumidity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/small_margin"
+                                    android:text="Hedef: --%"
+                                    android:textSize="@dimen/secondary_text_size"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Hedef: 60%" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="end">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvHumidifierStatus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Durum: Bilinmiyor"
+                                    android:textSize="@dimen/status_text_size"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Nemlendirici: KAPALI" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Incubation Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardIncubation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_content_padding">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:src="@drawable/ic_incubation"
+                                android:tint="@color/color_success"
+                                android:layout_marginEnd="@dimen/icon_margin"
+                                android:contentDescription="@string/incubation_icon" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/incubation_status"
+                                android:textSize="@dimen/card_title_text_size"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="@dimen/divider_margin"
+                            android:background="@color/divider_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical">
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/tvCurrentDay"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="-- gün"
+                                        android:textSize="@dimen/main_value_text_size"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/text_primary"
+                                        tools:text="15" />
+
+                                    <com.google.android.material.textview.MaterialTextView
+                                        android:id="@+id/tvTotalDays"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="/ -- gün"
+                                        android:textSize="@dimen/main_value_text_size"
+                                        android:textColor="@color/text_secondary"
+                                        tools:text="/ 21 gün" />
+
+                                </LinearLayout>
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvIncubationType"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/small_margin"
+                                    android:text="Tip: Bilinmiyor"
+                                    android:textSize="@dimen/secondary_text_size"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Tip: Tavuk" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:gravity="end">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvIncubationStatus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Durum: Bilinmiyor"
+                                    android:textSize="@dimen/status_text_size"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Durum: ÇALIŞIYOR" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Completion Status -->
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/tvCompletionStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/small_margin"
+                            android:padding="@dimen/small_padding"
+                            android:background="@drawable/background_warning"
+                            android:text="Kuluçka Tamamlandı"
+                            android:textSize="@dimen/secondary_text_size"
+                            android:textStyle="bold"
+                            android:textColor="@color/color_warning_text"
+                            android:gravity="center"
+                            android:visibility="gone"
+                            tools:visibility="visible"
+                            tools:text="Kuluçka Tamamlandı - Çıkım Devam Ediyor" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Control Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardControl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_content_padding">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:src="@drawable/ic_motor"
+                                android:tint="@color/color_primary"
+                                android:layout_marginEnd="@dimen/icon_margin"
+                                android:contentDescription="@string/control_icon" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/control_status"
+                                android:textSize="@dimen/card_title_text_size"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="@dimen/divider_margin"
+                            android:background="@color/divider_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvMotorStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Motor: Bilinmiyor"
+                                    android:textSize="@dimen/secondary_text_size"
+                                    android:textColor="@color/text_secondary"
+                                    tools:text="Motor: ÇALIŞIYOR" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvPIDStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="PID: Bilinmiyor"
+                                    android:textSize="@dimen/secondary_text_size"
+                                    android:textColor="@color/text_secondary"
+                                    android:gravity="end"
+                                    tools:text="PID: Otomatik" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/small_margin">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvMotorSettings"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Ayarlar: --"
+                                    android:textSize="@dimen/small_text_size"
+                                    android:textColor="@color/text_tertiary"
+                                    tools:text="Ayarlar: 120dk / 14s" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvAlarmStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Alarm: Bilinmiyor"
+                                    android:textSize="@dimen/small_text_size"
+                                    android:textColor="@color/text_tertiary"
+                                    android:gravity="end"
+                                    tools:text="Alarm: AÇIK" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- Connection Card -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/card_content_padding">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size"
+                                android:layout_height="@dimen/icon_size"
+                                android:src="@drawable/ic_wifi"
+                                android:tint="@color/color_accent"
+                                android:layout_marginEnd="@dimen/icon_margin"
+                                android:contentDescription="@string/wifi_icon" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/connection_status"
+                                android:textSize="@dimen/card_title_text_size"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_primary" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="@dimen/divider_margin"
+                            android:background="@color/divider_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/tvConnectionStatus"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Bağlantı kontrol ediliyor..."
+                                android:textSize="@dimen/secondary_text_size"
+                                android:textStyle="bold"
+                                android:textColor="@color/text_secondary"
+                                tools:text="Bağlı (KULUCKA_MK)" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/small_margin">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvIPAddress"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="IP: --"
+                                    android:textSize="@dimen/small_text_size"
+                                    android:textColor="@color/text_tertiary"
+                                    tools:text="IP: 192.168.4.1" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvWiFiMode"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Mod: --"
+                                    android:textSize="@dimen/small_text_size"
+                                    android:textColor="@color/text_tertiary"
+                                    android:gravity="end"
+                                    tools:text="Mod: AP" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="@dimen/small_margin">
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvSignalStrength"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Sinyal: --"
+                                    android:textSize="@dimen/small_text_size"
+                                    android:textColor="@color/text_tertiary"
+                                    tools:text="Sinyal: -45 dBm" />
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/tvUptime"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Çalışma süresi: --"
+                                    android:textSize="@dimen/small_text_size"
+                                    android:textColor="@color/text_tertiary"
+                                    android:gravity="end"
+                                    tools:text="Çalışma süresi: 2:30:15" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Floating Action Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_settings"
+        android:contentDescription="@string/settings"
+        app:tint="@android:color/white" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
