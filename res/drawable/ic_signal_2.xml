@@ -1,0 +1,21 @@
+<!-- ic_signal_2.xml - Fair Signal -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M2,17h20v2H2V17z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M5.05,7.05L6.46,8.46c0.97,-0.97 2.56,-0.97 3.54,0L11.42,7C9.87,5.45 7.31,5.45 5.76,7L5.05,7.05z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M1.15,4.05L2.56,5.46c1.7,-1.7 4.44,-1.7 6.14,0L10.12,4C7.51,1.39 3.37,1.39 0.76,4L1.15,4.05z"
+        android:fillAlpha="0.3"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M23.24,4c-2.61,-2.61 -6.75,-2.61 -9.36,0L15.3,5.46c1.7,-1.7 4.44,-1.7 6.14,0L23.24,4z"
+        android:fillAlpha="0.3"/>
+</vector>
