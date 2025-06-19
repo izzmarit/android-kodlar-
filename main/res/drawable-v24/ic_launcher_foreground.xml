@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Yumurta şekli - Kuluçka simgesi -->
+    <group
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:translateX="16"
+        android:translateY="16">
+
+        <!-- Yumurta gövdesi -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="2"
+            android:pathData="M54,20 C42,20 32,35 32,50 C32,65 32,72 32,78 C32,90 42,98 54,98 C66,98 76,90 76,78 C76,72 76,65 76,50 C76,35 66,20 54,20z" />
+
+        <!-- Sıcaklık göstergesi -->
+        <path
+            android:fillColor="#FF5722"
+            android:pathData="M50,40 L50,60 M45,45 L50,40 L55,45 M45,55 L50,60 L55,55" />
+
+        <!-- Nem damlası -->
+        <path
+            android:fillColor="#03A9F4"
+            android:pathData="M58,70 C58,68 60,64 62,64 C64,64 66,68 66,70 C66,72 64,74 62,74 C60,74 58,72 58,70z" />
+
+        <!-- MK yazısı -->
+        <path
+            android:fillColor="#1976D2"
+            android:strokeWidth="1"
+            android:pathData="M42,82 L42,90 L44,86 L46,90 L46,82 M50,82 L50,90 M50,86 L54,82 M54,82 L54,90" />
+    </group>
+</vector>
